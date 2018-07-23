@@ -1,92 +1,92 @@
-const Sequelize = require('sequelize');
-const sequelize = require('./sequelize');
+const Sequelize = require("sequelize");
+const sequelize = require("./sequelize");
 
-const restaurant = sequelize.define('restaurant', {
+const restaurant = sequelize.define("restaurant", {
   rid: {
     type: Sequelize.INTEGER(11),
     autoIncrement: true,
     primaryKey: true,
-    allowNull: false,
+    allowNull: false
   },
   name: {
     type: Sequelize.STRING(20),
-    allowNull: false,
+    allowNull: false
   },
   url: {
     type: Sequelize.STRING(50),
-    allowNull: false,
+    allowNull: false
   },
   location: {
     type: Sequelize.STRING(30),
-    allowNull: false,
+    allowNull: false
   },
   avg_price: {
     type: Sequelize.INTEGER(5),
-    allowNull: true,
+    allowNull: true
   },
   taste_score: {
     type: Sequelize.STRING(4),
-    allowNull: true,
+    allowNull: true
   },
   env_score: {
     type: Sequelize.STRING(4),
-    allowNull: true,
+    allowNull: true
   },
   service_score: {
     type: Sequelize.STRING(4),
-    allowNull: true,
+    allowNull: true
   },
   comments_num: {
     type: Sequelize.STRING(6),
-    allowNull: true,
+    allowNull: true
   },
   level: {
     type: Sequelize.STRING(12),
-    allowNull: true,
+    allowNull: true
   },
   city: {
     type: Sequelize.STRING(10),
-    allowNull: false,
+    allowNull: false
   },
   district: {
     type: Sequelize.STRING(12),
-    allowNull: false,
+    allowNull: false
   },
   type: {
     type: Sequelize.STRING(16),
-    defaultValue: '未分类',
-  },
+    defaultValue: "未分类"
+  }
 });
 
-const food = sequelize.define('food', {
+const food = sequelize.define("food", {
   fid: {
     type: Sequelize.INTEGER(11),
     autoIncrement: true,
-    primaryKey: true,
+    primaryKey: true
   },
   name: {
     type: Sequelize.STRING(20),
-    allowNull: false,
+    allowNull: false
   },
   price: {
     type: Sequelize.INTEGER(5),
-    allowNull: true,
+    allowNull: true
   },
   recommend_num: {
     type: Sequelize.INTEGER(6),
-    allowNull: true,
+    allowNull: true
   },
   url: {
     type: Sequelize.STRING(60),
-    allowNull: false,
+    allowNull: false
   },
   rid: {
     type: Sequelize.INTEGER(11),
     references: {
-      model: 'restaurant',
-      key: 'rid',
-    },
-  },
+      model: "restaurants",
+      key: "rid"
+    }
+  }
 });
 // const food_type = sequelize.define('food_type', {
 //   ft_id: {
@@ -134,3 +134,17 @@ const food = sequelize.define('food', {
 //     },
 //   },
 // });
+
+restaurant.sync().then(res => {
+  console.log("成功同步数据库restaurant");
+});
+
+food.sync().then(res => {
+  console.log('成功同步数据库food');
+});
+
+module.exports = {
+  restaurant,
+  food,
+};
+

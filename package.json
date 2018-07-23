@@ -4,6 +4,9 @@
   "repository": "git@github.com:TATnoidea/the-food-searcher.git",
   "author": "chengzichao <chengzichao1995@gmail.com>",
   "license": "MIT",
+  "scripts": {
+    "start": "node ./app/app.js"
+  },
   "dependencies": {
     "mysql2": "^1.5.3",
     "request": "^2.87.0",
@@ -11,7 +14,6 @@
     "sequelize": "^4.38.0"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^13.0.0",
     "eslint-plugin-import": "^2.13.0",
     "prettier-eslint-cli": "^4.7.1"
