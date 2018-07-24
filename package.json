@@ -5,10 +5,11 @@
   "author": "chengzichao <chengzichao1995@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "start": "node ./app/app.js",
-    "auto": "sequelize-auto -h localhost -d spider -u root -p 3306 -e mysql -o ./app/models -t proxies,food,restaurants -C"
+    "start": "node ./bin/app.js",
+    "auto": "sequelize-auto -h localhost -d spider -u root -p 3306 -e mysql -o ./bak/models -t proxies,food,restaurants,params -C"
   },
   "dependencies": {
+    "cheerio": "^1.0.0-rc.2",
     "mysql": "^2.16.0",
     "mysql2": "^1.5.3",
     "request": "^2.87.0",
